@@ -1,16 +1,18 @@
-//import { useState } from 'react'
-import './App.css'
-import Formulario from './components/Formulario'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React, { useState } from 'react'
+import Registro from './components/Registro'
+//import Formulario from './components/Formulario'
+//import SocialButton from './components/SocialButton'
+//import Alert from './components/Alert'
 
 function App() {
-    return (
-        <>
-        <div>
-            <Formulario/>
-        </div>
-        </>
-    )
+  const [errorMessage, setErrorMessage] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
+
+  return (
+    <div>
+      <Registro errorMessage={errorMessage} successMessage={successMessage} />
+    </div>
+  )
 }
 
 export default App

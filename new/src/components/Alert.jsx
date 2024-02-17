@@ -1,10 +1,12 @@
-/*import React from "react";
+import React from 'react'
 
-const Alert = ({}) => {
+function Alert({ errorMensaje, successMensaje }) {
   return (
-    <>
-    </>
+    <div>
+      {errorMensaje && <div className="alert danger">{errorMensaje}</div>}
+      {successMensaje && <div className="alert success">{successMensaje}</div>}
+    </div>
   )
 }
 
-export default Alert*/
+export default Alert
