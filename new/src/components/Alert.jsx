@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Alert({ errorMensaje, successMensaje }) {
+const Alert = ({ errorMensaje, successMensaje }) => {
   return (
     <div>
       {errorMensaje && <div className="alert danger">{errorMensaje}</div>}
