@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
-import Registro from './components/Registro'
-//import Formulario from './components/Formulario'
-//import SocialButton from './components/SocialButton'
-//import Alert from './components/Alert'
+import React from 'react';
+import Registro from './components/Registro';
+import './App.css' /*no me tomo en css*/
 
 function App() {
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+  const [message, setMessage] = React.useState('');
+  const [messageType, setMessageType] = React.useState('');
+
+  const handleRegistration = (message, messageType) => {
+    setMessage(message);
+    setMessageType(messageType);
+  };
 
   return (
-    <div>
-      <Registro errorMessage={errorMessage} successMessage={successMessage} />
+    <div className="App">
+      <Registro onRegistration={handleRegistration} />
+      {message && <Alert message={message} messageType={messageType} />}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

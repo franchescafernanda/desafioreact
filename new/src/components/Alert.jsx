@@ -1,12 +1,24 @@
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Alert = ({ errorMensaje, successMensaje }) => {
-  return (
-    <div>
-      {errorMensaje && <div className="alert danger">{errorMensaje}</div>}
-      {successMensaje && <div className="alert success">{successMensaje}</div>}
-    </div>
-  )
-}
+const Alert = ({ errorMessage, successMessage }) => {
+  if (errorMessage) {
+    return (
+      <div className="alert alert-danger mt-3" role="alert">
+        {errorMessage}
+      </div>
+    );
+  }
 
-export default Alert
+  if (successMessage) {
+    return (
+      <div className="alert alert-success mt-3" role="alert">
+        {successMessage}
+      </div>
+    );
+  }
+
+  return null;
+};
+
+export default Alert;

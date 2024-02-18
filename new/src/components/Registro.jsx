@@ -1,37 +1,22 @@
-import React, { useState } from 'react'
-import Formulario from './Formulario'
-import SocialButton from './SocialButton'
-import Alert from './Alert'
+import React from 'react';
+import SocialButton from './SocialButton';
+import Formulario from './Formulario';
 
-const Registro = () => {
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
-
-  const [email, setEmail] = useState('')
-  const [contrasena, setContrasena] = useState('')
-  const [confirmContrasena, setConfirmContrasena] = useState('')
-
-  const handleSubmit = (e, email, contrasena, confirmContrasena) => {
-    e.preventDefault()
-    if (emailIsValid(email) && contrasena === confirmContrasena) {
-      setSuccessMessage('Registro exitoso')
-    } else {
-      setErrorMessage('Error en el registro')
-    }
-  };
-
-  const emailIsValid = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-  };
+const Registro = ({ onRegistration }) => {
+  const socialButtons = [
+    { icon: 'facebook' },
+    //{ icon: 'google' }, con este codigo se me repetia 2 veces
+  ];
 
   return (
-    <div>
-      <h1>Registro</h1>
-      <Formulario handleSubmit={handleSubmit} email={email} setEmail={setEmail} contrasena={contrasena} setContrasena={setContrasena} confirmContrasena={confirmContrasena} setConfirmContrasena={setConfirmContrasena} />
-      <SocialButton />
-      <Alert errorMessage={errorMessage} successMessage={successMessage} />
-    </div>
-  )
-}
+      <div className="registration-form d-flex flex-column align-items-center">
+        <h2>Crea una cuenta</h2>
+        {socialButtons.map(({ icon }, index) => (
+          <SocialButton key={index} icon={icon} />
+        ))}
+        <Formulario onRegistration={onRegistration} />
+      </div>
+  );
+};
 
-export default Registro
+export default Registro;
